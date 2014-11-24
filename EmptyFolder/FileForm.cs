@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.IO;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace EmptyFolder
 {
@@ -66,6 +60,18 @@ namespace EmptyFolder
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
+            if (FileListView.Items.Count == 0)
+            {
+                MessageBox.Show("No empty folders found");
+                return;
+            }
+
+            if (FileListView.CheckedItems.Count == 0)
+            {
+                MessageBox.Show("Please select some directories to delete.");
+                return;
+            }
+
             var prompt = MessageBox.Show("Are you sure?", "No return...", MessageBoxButtons.YesNo);
 
             if (prompt == System.Windows.Forms.DialogResult.No)
@@ -73,7 +79,7 @@ namespace EmptyFolder
                 return;
             }
 
-            foreach (ListViewItem lvi in FileListView.Items)
+            foreach (ListViewItem lvi in FileListView.CheckedItems)
             {
                 if (Directory.Exists(lvi.Text))
                 {
