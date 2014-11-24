@@ -16,13 +16,23 @@ namespace EmptyFolder
         public FileForm()
         {
             InitializeComponent();
-
-
         }
 
         public void ScanDir(string path)
         {
+            if (string.IsNullOrEmpty(path))
+            {
+                MessageBox.Show("Please specify a directory");
+                return;
+            }
+
             var dir = new DirectoryInfo(path);
+
+            if (!dir.Exists)
+            {
+                MessageBox.Show(string.Format("Directory {0} not found", path));
+                return;
+            }
 
             if (dir.Name.ToLower() == "_lightroom")
             {
@@ -30,7 +40,6 @@ namespace EmptyFolder
             }
 
             var empty = dir.GetFileSystemInfos().Count() == 0;
-
 
             if (!empty)
             {
@@ -48,7 +57,7 @@ namespace EmptyFolder
 
         private void ScanButton_Click(object sender, EventArgs e)
         {
-            var path = "D:\\PhotosTest";
+            var path = ScanPath.Text;
 
             FileListView.Items.Clear();
 
