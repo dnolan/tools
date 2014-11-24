@@ -34,6 +34,7 @@
             this.DeleteButton = new System.Windows.Forms.Button();
             this.ScanPath = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.ClearButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // FileListView
@@ -93,11 +94,23 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Scan Path;";
             // 
+            // ClearButton
+            // 
+            this.ClearButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ClearButton.Location = new System.Drawing.Point(12, 283);
+            this.ClearButton.Name = "ClearButton";
+            this.ClearButton.Size = new System.Drawing.Size(75, 23);
+            this.ClearButton.TabIndex = 5;
+            this.ClearButton.Text = "Clear";
+            this.ClearButton.UseVisualStyleBackColor = true;
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
+            // 
             // FileForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(413, 327);
+            this.Controls.Add(this.ClearButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ScanPath);
             this.Controls.Add(this.DeleteButton);
@@ -118,6 +131,7 @@
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.TextBox ScanPath;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button ClearButton;
     }
 }
 

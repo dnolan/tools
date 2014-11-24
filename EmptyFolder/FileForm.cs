@@ -66,6 +66,13 @@ namespace EmptyFolder
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
+            var prompt = MessageBox.Show("Are you sure?", "No return...", MessageBoxButtons.YesNo);
+
+            if (prompt == System.Windows.Forms.DialogResult.No)
+            {
+                return;
+            }
+
             foreach (ListViewItem lvi in FileListView.Items)
             {
                 if (Directory.Exists(lvi.Text))
@@ -74,6 +81,11 @@ namespace EmptyFolder
                 }
             }
 
+            FileListView.Items.Clear();
+        }
+
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
             FileListView.Items.Clear();
         }
     }
